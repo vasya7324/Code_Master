@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок | CodeMaster</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/courses.css">
+    <link rel="stylesheet" href="styles/lesson.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-code"></i>
+                <span>CodeMaster</span>
+            </div>
+            <div class="nav-actions" id="navActions">
+                <!-- Заполнится через JavaScript -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Lesson Container -->
+    <div class="lesson-container">
+        <!-- Sidebar -->
+        <div class="lesson-sidebar">
+            <div class="sidebar-header">
+                <h3 id="courseTitleSidebar">Название курса</h3>
+                <div class="progress-mini">
+                    <span>Прогресс: <strong id="sidebarProgress">0%</strong></span>
+                    <div class="progress-bar-mini">
+                        <div class="progress-fill-mini" id="sidebarProgressBar"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lessons-list" id="lessonsList">
+                <!-- Список уроков загрузится через JavaScript -->
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="lesson-content">
+            <!-- Lesson Header -->
+            <div class="lesson-header">
+                <div class="lesson-nav">
+                    <button class="btn-nav" id="prevLesson">
+                        <i class="fas fa-arrow-left"></i>
+                        Предыдущий
+                    </button>
+                    <button class="btn-nav" id="nextLesson">
+                        Следующий
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                
+                <div class="lesson-info">
+                    <h1 id="lessonTitle">Название урока</h1>
+                    <div class="lesson-meta">
+                        <span class="lesson-type" id="lessonType">Урок</span>
+                        <span class="lesson-duration" id="lessonDuration">15 мин</span>
+                        <span class="lesson-number" id="lessonNumber">Урок 1 из 10</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lesson Body -->
+            <div class="lesson-body">
+                <!-- Theory Section -->
+                <div class="theory-section" id="theorySection">
+                    <h2>Теория</h2>
+                    <div class="theory-content" id="theoryContent">
+                        <!-- Теория загрузится через JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Practice Section -->
+                <div class="practice-section" id="practiceSection">
+                    <h2>Практика</h2>
+                    <div class="practice-content" id="practiceContent">
+                        <!-- Практика загрузится через JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Quiz Section -->
+                <div class="quiz-section" id="quizSection">
+                    <h2>Проверка знаний</h2>
+                    <div class="quiz-content" id="quizContent">
+                        <!-- Тест загрузится через JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Completion Section -->
+                <div class="completion-section" id="completionSection" style="display: none;">
+                    <div class="completion-card">
+                        <div class="completion-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h2>Урок завершен! 🎉</h2>
+                        <p>Вы успешно прошли этот урок и заработали <strong id="earnedXP">10</strong> XP</p>
+                        
+                        <div class="completion-stats">
+                            <div class="completion-stat">
+                                <span class="stat-value" id="correctAnswers">0</span>
+                                <span class="stat-label">Правильных ответов</span>
+                            </div>
+                            <div class="completion-stat">
+                                <span class="stat-value" id="timeSpentLesson">0м</span>
+                                <span class="stat-label">Потрачено времени</span>
+                            </div>
+                            <div class="completion-stat">
+                                <span class="stat-value" id="lessonScore">0%</span>
+                                <span class="stat-label">Результат</span>
+                            </div>
+                        </div>
+
+                        <div class="completion-actions">
+                            <button class="btn-primary" id="continueButton">
+                                Продолжить обучение
+                            </button>
+                            <button class="btn-outline" id="reviewButton">
+                                Повторить урок
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/lesson.js"></script>
+</body>
+</html>

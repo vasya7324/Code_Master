@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курсы | CodeMaster</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/courses.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-code"></i>
+                <span>CodeMaster</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="courses.html" class="nav-link active">Курсы</a>
+                <a href="challenges.html" class="nav-link">Челленджи</a>
+                <a href="community.html" class="nav-link">Сообщество</a>
+            </div>
+            <div class="nav-actions" id="navActions">
+                <!-- Заполнится через JavaScript -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Courses Header -->
+    <section class="courses-header">
+        <div class="container">
+            <h1>Интерактивные курсы</h1>
+            <p>Изучайте программирование шаг за шагом с практическими заданиями</p>
+            <div class="courses-filter">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="beginner">Для начинающих</button>
+                <button class="filter-btn" data-filter="intermediate">Средний уровень</button>
+                <button class="filter-btn" data-filter="advanced">Продвинутый</button>
+                <button class="filter-btn" data-filter="project">Проекты</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Grid -->
+    <section class="courses-grid-section">
+        <div class="container">
+            <div class="courses-grid" id="coursesGrid">
+                <!-- Курсы загрузятся через JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Paths -->
+    <section class="learning-paths">
+        <div class="container">
+            <h2>Карьерные пути</h2>
+            <p>Выберите специализацию и получите персонализированный план обучения</p>
+            
+            <div class="paths-grid">
+                <div class="path-card" data-path="frontend">
+                    <div class="path-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h3>Frontend Developer</h3>
+                    <p>Создавайте современные веб-интерфейсы</p>
+                    <div class="path-skills">
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                    </div>
+                    <div class="path-meta">
+                        <span>⏱️ 4-6 месяцев</span>
+                        <span>📚 8 курсов</span>
+                    </div>
+                    <button class="btn-path" onclick="startCareerPath('frontend')">
+                        Начать путь
+                    </button>
+                </div>
+
+                <div class="path-card" data-path="backend">
+                    <div class="path-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Backend Developer</h3>
+                    <p>Разрабатывайте серверную логику и API</p>
+                    <div class="path-skills">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Базы данных</span>
+                    </div>
+                    <div class="path-meta">
+                        <span>⏱️ 5-7 месяцев</span>
+                        <span>📚 10 курсов</span>
+                    </div>
+                    <button class="btn-path" onclick="startCareerPath('backend')">
+                        Начать путь
+                    </button>
+                </div>
+
+                <div class="path-card" data-path="data-science">
+                    <div class="path-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Data Scientist</h3>
+                    <p>Анализируйте данные и создавайте ML-модели</p>
+                    <div class="path-skills">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">ML</span>
+                    </div>
+                    <div class="path-meta">
+                        <span>⏱️ 6-8 месяцев</span>
+                        <span>📚 12 курсов</span>
+                    </div>
+                    <button class="btn-path" onclick="startCareerPath('data-science')">
+                        Начать путь
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/auth.js"></script>
+    <script src="js/courses.js"></script>
+</body>
+</html>

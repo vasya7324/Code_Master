@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Челленджи | CodeMaster</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/challenges.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-code"></i>
+                <span>CodeMaster</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="courses.html" class="nav-link">Курсы</a>
+                <a href="challenges.html" class="nav-link active">Челленджи</a>
+                <a href="arena.html" class="nav-link">Арена</a>
+                <a href="community.html" class="nav-link">Сообщество</a>
+            </div>
+            <div class="nav-actions" id="navActions">
+                <!-- Заполнится через JavaScript -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Challenges Header -->
+    <section class="challenges-header">
+        <div class="container">
+            <div class="header-content">
+                <h1>Испытайте свои навыки</h1>
+                <p>Решайте реальные задачи, участвуйте в соревнованиях и становитесь лучше</p>
+                
+                <div class="user-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="userRank">Новичок</div>
+                        <div class="stat-label">Ранг</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="userScore">0</div>
+                        <div class="stat-label">Очки</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="solvedChallenges">0</div>
+                        <div class="stat-label">Решено</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="userPosition">-#</div>
+                        <div class="stat-label">Позиция</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Challenges -->
+    <section class="daily-challenges">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ежедневные челленджи</h2>
+                <p>Новые задачи каждый день. Решайте и зарабатывайте очки!</p>
+                <div class="daily-timer" id="dailyTimer">
+                    <i class="fas fa-clock"></i>
+                    <span id="timerText">Обновление через: 12:34:56</span>
+                </div>
+            </div>
+
+            <div class="challenges-grid" id="dailyChallengesGrid">
+                <!-- Ежедневные челленджи загрузятся через JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenge Categories -->
+    <section class="challenge-categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Категории челленджей</h2>
+                <p>Выберите область, в которой хотите совершенствоваться</p>
+            </div>
+
+            <div class="categories-grid">
+                <div class="category-card" data-category="algorithms">
+                    <div class="category-icon">
+                        <i class="fas fa-sort-amount-down"></i>
+                    </div>
+                    <h3>Алгоритмы</h3>
+                    <p>Сортировки, поиск, оптимизация</p>
+                    <div class="category-stats">
+                        <span>🔢 45 задач</span>
+                        <span>⚡ Сложность: Средняя</span>
+                    </div>
+                    <button class="btn-category" onclick="challengesSystem.selectCategory('algorithms')">
+                        Изучить алгоритмы
+                    </button>
+                </div>
+
+                <div class="category-card" data-category="data-structures">
+                    <div class="category-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Структуры данных</h3>
+                    <p>Списки, деревья, графы, хэш-таблицы</p>
+                    <div class="category-stats">
+                        <span>🏗️ 38 задач</span>
+                        <span>⚡ Сложность: Высокая</span>
+                    </div>
+                    <button class="btn-category" onclick="challengesSystem.selectCategory('data-structures')">
+                        Изучить структуры
+                    </button>
+                </div>
+
+                <div class="category-card" data-category="sql">
+                    <div class="category-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>SQL</h3>
+                    <p>Запросы, оптимизация, проектирование</p>
+                    <div class="category-stats">
+                        <span>💾 52 задачи</span>
+                        <span>⚡ Сложность: Разная</span>
+                    </div>
+                    <button class="btn-category" onclick="challengesSystem.selectCategory('sql')">
+                        Изучить SQL
+                    </button>
+                </div>
+
+                <div class="category-card" data-category="system-design">
+                    <div class="category-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Системный дизайн</h3>
+                    <p>Архитектура, масштабирование, микросервисы</p>
+                    <div class="category-stats">
+                        <span>📐 25 задач</span>
+                        <span>⚡ Сложность: Очень высокая</span>
+                    </div>
+                    <button class="btn-category" onclick="challengesSystem.selectCategory('system-design')">
+                        Изучить дизайн
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weekly Competition -->
+    <section class="weekly-competition">
+        <div class="container">
+            <div class="competition-header">
+                <div class="competition-info">
+                    <h2>Еженедельный турнир</h2>
+                    <p>Соревнуйтесь с другими разработчиками и поднимайтесь в рейтинге</p>
+                </div>
+                <div class="competition-timer">
+                    <div class="timer-label">До конца турнира:</div>
+                    <div class="timer-value" id="weeklyTimer">5д 12ч 34м</div>
+                </div>
+            </div>
+
+            <div class="competition-stats">
+                <div class="competition-stat">
+                    <div class="stat-number">1,248</div>
+                    <div class="stat-label">Участников</div>
+                </div>
+                <div class="competition-stat">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Задач</div>
+                </div>
+                <div class="competition-stat">
+                    <div class="stat-number">2,500</div>
+                    <div class="stat-label">Призовой фонд (XP)</div>
+                </div>
+            </div>
+
+            <div class="competition-actions">
+                <button class="btn-competition primary" onclick="challengesSystem.joinCompetition()">
+                    <i class="fas fa-trophy"></i>
+                    Участвовать в турнире
+                </button>
+                <button class="btn-competition outline" onclick="challengesSystem.viewLeaderboard()">
+                    <i class="fas fa-list-ol"></i>
+                    Таблица лидеров
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="achievements-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ваши достижения</h2>
+                <p>Зарабатывайте значки и показывайте свой прогресс</p>
+            </div>
+
+            <div class="achievements-grid" id="achievementsGrid">
+                <!-- Достижения загрузятся через JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <script src="js/auth.js"></script>
+    <script src="js/challenges.js"></script>
+</body>
+</html>

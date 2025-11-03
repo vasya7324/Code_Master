@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Помощник | CodeMaster</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/ai-helper.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-code"></i>
+                <span>CodeMaster</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="courses.html" class="nav-link">Курсы</a>
+                <a href="challenges.html" class="nav-link">Челленджи</a>
+                <a href="ai-helper.html" class="nav-link active">AI Помощник</a>
+                <a href="community.html" class="nav-link">Сообщество</a>
+            </div>
+            <div class="nav-actions" id="navActions">
+                <!-- Заполнится через JavaScript -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- AI Helper Header -->
+    <section class="ai-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="ai-avatar">
+                    <div class="avatar-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="ai-status">
+                        <span class="status-dot online"></span>
+                        <span>AI Помощник онлайн</span>
+                    </div>
+                </div>
+                
+                <div class="header-text">
+                    <h1>Ваш персональный AI ментор</h1>
+                    <p>Получайте помощь в реальном времени, объяснения кода и персонализированные рекомендации</p>
+                </div>
+
+                <div class="ai-stats">
+                    <div class="ai-stat">
+                        <div class="stat-value" id="questionsAnswered">1,247</div>
+                        <div class="stat-label">Вопросов отвечено</div>
+                    </div>
+                    <div class="ai-stat">
+                        <div class="stat-value" id="responseTime">2.3с</div>
+                        <div class="stat-label">Среднее время ответа</div>
+                    </div>
+                    <div class="ai-stat">
+                        <div class="stat-value" id="satisfactionRate">94%</div>
+                        <div class="stat-label">Удовлетворенность</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Helper Interface -->
+    <section class="ai-interface">
+        <div class="container">
+            <div class="ai-container">
+                <!-- Sidebar with Quick Actions -->
+                <div class="ai-sidebar">
+                    <div class="sidebar-section">
+                        <h3>Быстрые действия</h3>
+                        <div class="quick-actions">
+                            <button class="quick-action" onclick="aiHelper.askQuickQuestion('explain')">
+                                <i class="fas fa-lightbulb"></i>
+                                Объяснить код
+                            </button>
+                            <button class="quick-action" onclick="aiHelper.askQuickQuestion('debug')">
+                                <i class="fas fa-bug"></i>
+                                Найти ошибку
+                            </button>
+                            <button class="quick-action" onclick="aiHelper.askQuickQuestion('optimize')">
+                                <i class="fas fa-tachometer-alt"></i>
+                                Оптимизировать код
+                            </button>
+                            <button class="quick-action" onclick="aiHelper.askQuickQuestion('best-practices')">
+                                <i class="fas fa-graduation-cap"></i>
+                                Лучшие практики
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <h3>Недавние темы</h3>
+                        <div class="recent-topics" id="recentTopics">
+                            <!-- Заполнится через JavaScript -->
+                        </div>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <h3>AI Навыки</h3>
+                        <div class="ai-skills">
+                            <div class="skill-item">
+                                <span>Python</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>JavaScript</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" style="width: 88%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>SQL</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span>Алгоритмы</span>
+                                <div class="skill-level">
+                                    <div class="skill-bar" style="width: 96%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Chat Area -->
+                <div class="ai-chat">
+                    <div class="chat-header">
+                        <div class="chat-info">
+                            <h3>Чат с AI Помощником</h3>
+                            <p>Задавайте вопросы о программировании, получайте помощь с кодом</p>
+                        </div>
+                        <div class="chat-actions">
+                            <button class="btn-chat-action" onclick="aiHelper.clearChat()">
+                                <i class="fas fa-trash"></i>
+                                Очистить чат
+                            </button>
+                            <button class="btn-chat-action" onclick="aiHelper.exportChat()">
+                                <i class="fas fa-download"></i>
+                                Экспорт
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message ai-message">
+                            <div class="message-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <div class="message-text">
+                                    Привет! Я ваш AI помощник в CodeMaster. Я могу:
+                                    <ul>
+                                        <li>📝 Объяснять концепции программирования</li>
+                                        <li>🔍 Помогать находить ошибки в коде</li>
+                                        <li>⚡ Предлагать оптимизации</li>
+                                        <li>🎯 Давать персонализированные рекомендации по обучению</li>
+                                    </ul>
+                                    Чем могу помочь?
+                                </div>
+                                <div class="message-time">Только что</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-container">
+                        <div class="input-actions">
+                            <button class="btn-input-action" onclick="aiHelper.insertCodeTemplate()">
+                                <i class="fas fa-code"></i>
+                                Вставить код
+                            </button>
+                            <button class="btn-input-action" onclick="aiHelper.attachFile()">
+                                <i class="fas fa-paperclip"></i>
+                                Прикрепить файл
+                            </button>
+                            <button class="btn-input-action" onclick="aiHelper.useVoiceInput()">
+                                <i class="fas fa-microphone"></i>
+                                Голосовой ввод
+                            </button>
+                        </div>
+                        
+                        <div class="chat-input-wrapper">
+                            <textarea class="chat-input" id="chatInput" 
+                                      placeholder="Задайте вопрос о программировании..." 
+                                      rows="3"></textarea>
+                            <button class="btn-send" onclick="aiHelper.sendMessage()">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+
+                        <div class="input-suggestions">
+                            <span class="suggestion-label">Попробуйте спросить:</span>
+                            <div class="suggestions">
+                                <button class="suggestion" onclick="aiHelper.useSuggestion('Как работает цикл for в Python?')">
+                                    Как работает цикл for в Python?
+                                </button>
+                                <button class="suggestion" onclick="aiHelper.useSuggestion('Объясни концепцию замыканий в JavaScript')">
+                                    Объясни концепцию замыканий в JavaScript
+                                </button>
+                                <button class="suggestion" onclick="aiHelper.useSuggestion('Помоги оптимизировать этот SQL запрос')">
+                                    Помоги оптимизировать этот SQL запрос
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code Editor Panel -->
+                <div class="code-panel">
+                    <div class="panel-header">
+                        <h3>Редактор кода</h3>
+                        <div class="panel-actions">
+                            <button class="btn-panel" onclick="aiHelper.runCode()">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button class="btn-panel" onclick="aiHelper.formatCode()">
+                                <i class="fas fa-align-left"></i>
+                            </button>
+                            <button class="btn-panel" onclick="aiHelper.clearCode()">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="code-editor-ai">
+                        <select class="language-select-ai" id="aiLanguageSelect">
+                            <option value="python">Python</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="java">Java</option>
+                            <option value="cpp">C++</option>
+                            <option value="sql">SQL</option>
+                        </select>
+                        
+                        <textarea class="code-input-ai" id="aiCodeInput" 
+                                  placeholder="Введите ваш код для анализа...">def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+# Пример использования
+print(fibonacci(10))</textarea>
+                    </div>
+
+                    <div class="code-output" id="aiCodeOutput" style="display: none;">
+                        <div class="output-header">
+                            <span>Результат выполнения</span>
+                        </div>
+                        <div class="output-content" id="aiOutputContent"></div>
+                    </div>
+
+                    <div class="code-actions">
+                        <button class="btn-code-action primary" onclick="aiHelper.analyzeCode()">
+                            <i class="fas fa-search"></i>
+                            Анализировать код
+                        </button>
+                        <button class="btn-code-action" onclick="aiHelper.explainCode()">
+                            <i class="fas fa-question-circle"></i>
+                            Объяснить код
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Features Section -->
+    <section class="ai-features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Возможности AI Помощника</h2>
+                <p>Используйте современные технологии AI для ускорения обучения</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Анализ кода</h3>
+                    <p>Глубокий анализ вашего кода с выявлением ошибок, анти-паттернов и возможностей для улучшения</p>
+                    <ul class="feature-list">
+                        <li>Поиск синтаксических ошибок</li>
+                        <li>Выявление логических ошибок</li>
+                        <li>Рекомендации по стилю кода</li>
+                        <li>Обнаружение уязвимостей безопасности</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Оптимизация</h3>
+                    <p>Предложения по оптимизации производительности и улучшению алгоритмической сложности</p>
+                    <ul class="feature-list">
+                        <li>Анализ временной сложности</li>
+                        <li>Оптимизация использования памяти</li>
+                        <li>Рекомендации по кэшированию</li>
+                        <li>Улучшение алгоритмов</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Обучение</h3>
+                    <p>Персонализированные объяснения концепций и рекомендации по дальнейшему обучению</p>
+                    <ul class="feature-list">
+                        <li>Адаптивные объяснения</li>
+                        <li>Примеры кода</li>
+                        <li>Ссылки на документацию</li>
+                        <li>Рекомендации курсов</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Архитектура</h3>
+                    <p>Помощь в проектировании архитектуры приложений и выборе технологического стека</p>
+                    <ul class="feature-list">
+                        <li>Диаграммы архитектуры</li>
+                        <li>Выбор технологий</li>
+                        <li>Паттерны проектирования</li>
+                        <li>Масштабируемость</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/auth.js"></script>
+    <script src="js/ai-helper.js"></script>
+</body>
+</html>

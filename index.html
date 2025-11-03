@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeMaster | Изучение программирования</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-code"></i>
+                <span>CodeMaster</span>
+            </div>
+            <div class="nav-search">
+                <input type="text" placeholder="Поиск языков..." id="searchInput">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="nav-menu">
+                <a href="#languages" class="nav-link active">Языки</a>
+                <a href="#playground" class="nav-link">Песочница</a>
+                <a href="#courses" class="nav-link">Курсы</a>
+                <a href="#community" class="nav-link">Сообщество</a>
+            </div>
+            <div class="nav-actions" id="navActions">
+                <!-- Будет заполнено через JavaScript -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-gradient">Изучайте</span>
+                    <span class="title-main">программирование</span>
+                    <span class="title-sub">интерактивно</span>
+                </h1>
+                <p class="hero-description">
+                    Осваивайте языки программирования через практику. 
+                    Пишите код, решайте задачи и отслеживайте свой прогресс.
+                </p>
+                <div class="hero-actions" id="heroActions">
+                    <!-- Будет заполнено через JavaScript -->
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Языков</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Упражнений</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">50k+</div>
+                        <div class="stat-label">Учеников</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="window-controls">
+                            <span class="control red"></span>
+                            <span class="control yellow"></span>
+                            <span class="control green"></span>
+                        </div>
+                        <span class="window-title">example.py</span>
+                    </div>
+                    <div class="window-content">
+                        <pre><code class="python">def fibonacci(n):
+    """Вычисление чисел Фибоначчи"""
+    if n <= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+# Вывод первых 10 чисел
+for i in range(10):
+    print(f"F({i}) = {fibonacci(i)}")</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Progress Dashboard (только для авторизованных) -->
+    <section id="userDashboard" class="section-dashboard" style="display: none;">
+        <div class="container">
+            <div class="dashboard-header">
+                <h2>Ваш прогресс</h2>
+                <a href="profile.html" class="btn-view-all">Подробнее →</a>
+            </div>
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <i class="fas fa-fire"></i>
+                        <h3>Активность</h3>
+                    </div>
+                    <div class="dashboard-card-content">
+                        <div class="activity-item">
+                            <span class="activity-dot"></span>
+                            <span>Сегодня решено задач: <strong id="todayTasks">0</strong></span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-dot"></span>
+                            <span>Текущая серия: <strong id="currentStreak">0</strong> дней</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <i class="fas fa-trophy"></i>
+                        <h3>Достижения</h3>
+                    </div>
+                    <div class="dashboard-card-content">
+                        <div class="achievements-list" id="recentAchievements">
+                            <!-- Будет заполнено через JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-card-header">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Статистика</h3>
+                    </div>
+                    <div class="dashboard-card-content">
+                        <div class="stat-item">
+                            <span>Всего задач:</span>
+                            <span id="totalTasks">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>Пройдено курсов:</span>
+                            <span id="completedCourses">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages Grid -->
+    <section id="languages" class="section-languages">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Языки программирования</h2>
+                <p class="section-subtitle">Выберите язык для изучения</p>
+            </div>
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">Все</button>
+                <button class="filter-tab" data-filter="beginner">Для начинающих</button>
+                <button class="filter-tab" data-filter="web">Веб-разработка</button>
+                <button class="filter-tab" data-filter="data">Data Science</button>
+                <button class="filter-tab" data-filter="mobile">Мобильные</button>
+                <button class="filter-tab" data-filter="system">Системные</button>
+            </div>
+            <div class="languages-grid" id="languagesGrid">
+                <!-- Languages will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Playground -->
+    <section id="playground" class="section-playground">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Интерактивная песочница</h2>
+                <p class="section-subtitle">Пишите и запускайте код онлайн</p>
+            </div>
+            <div class="playground-container">
+                <div class="playground-controls">
+                    <select id="languageSelect" class="language-select">
+                        <option value="python">Python</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="java">Java</option>
+                        <option value="cpp">C++</option>
+                        <option value="rust">Rust</option>
+                        <option value="go">Go</option>
+                    </select>
+                    <button class="btn-run" id="runCode">
+                        <i class="fas fa-play"></i>
+                        Запустить код
+                    </button>
+                    <button class="btn-reset" id="resetCode">
+                        <i class="fas fa-redo"></i>
+                        Сбросить
+                    </button>
+                </div>
+                <div class="editor-container">
+                    <div class="code-editor">
+                        <div class="editor-header">
+                            <span id="editorTitle">script.py</span>
+                            <div class="editor-actions">
+                                <button class="btn-copy" id="copyCode">
+                                    <i class="far fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <textarea id="codeInput" class="code-input" placeholder="Введите ваш код здесь..."># Добро пожаловать в песочницу!
+# Напишите ваш код на Python и нажмите "Запустить код"
+
+def greet(name):
+    return f"Привет, {name}!"
+
+print(greet("Программист"))
+print("Удачи в изучении! 🚀")</textarea>
+                    </div>
+                    <div class="output-container">
+                        <div class="output-header">
+                            <span>Результат выполнения</span>
+                        </div>
+                        <div id="codeOutput" class="code-output">
+                            <div class="output-placeholder">
+                                <i class="fas fa-terminal"></i>
+                                <p>Результат появится здесь после запуска кода</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="section-courses">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Рекомендуемые курсы</h2>
+                <p class="section-subtitle">Структурированное обучение с нуля</p>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-badge">Бесплатно</div>
+                    <div class="course-header">
+                        <i class="fab fa-python course-icon"></i>
+                        <div class="course-info">
+                            <h3>Python для начинающих</h3>
+                            <div class="course-meta">
+                                <span class="course-level beginner">Начальный</span>
+                                <span class="course-duration">24 урока</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="course-description">
+                        Освойте основы Python через практические задания и проекты.
+                    </p>
+                    <div class="course-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0% завершено</span>
+                    </div>
+                    <button class="btn-course" onclick="enrollCourse('python-beginner')">
+                        Начать курс
+                    </button>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-badge premium">Premium</div>
+                    <div class="course-header">
+                        <i class="fab fa-js course-icon"></i>
+                        <div class="course-info">
+                            <h3>JavaScript Pro</h3>
+                            <div class="course-meta">
+                                <span class="course-level medium">Средний</span>
+                                <span class="course-duration">36 уроков</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="course-description">
+                        Продвинутый JavaScript: асинхронность, паттерны, архитектура.
+                    </p>
+                    <div class="course-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0% завершено</span>
+                    </div>
+                    <button class="btn-course premium" onclick="enrollCourse('javascript-pro')">
+                        Начать курс
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="section-community">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Сообщество</h2>
+                <p class="section-subtitle">Общайтесь с другими разработчиками</p>
+            </div>
+            <div class="community-stats">
+                <div class="community-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">50,000+</div>
+                        <div class="stat-label">Активных учеников</div>
+                    </div>
+                </div>
+                <div class="community-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">10,000+</div>
+                        <div class="stat-label">Обсуждений</div>
+                    </div>
+                </div>
+                <div class="community-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number">5,000+</div>
+                        <div class="stat-label">Проектов</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/code-editor.js"></script>
+    <script src="js/progress.js"></script>
+</body>
+</html>

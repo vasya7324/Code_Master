@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль | CodeMaster</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-code"></i>
+                <span>CodeMaster</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Главная</a>
+                <a href="index.html#languages" class="nav-link">Языки</a>
+                <a href="index.html#playground" class="nav-link">Песочница</a>
+                <a href="index.html#courses" class="nav-link">Курсы</a>
+            </div>
+            <div class="nav-actions" id="navActions">
+                <!-- Будет заполнено через JavaScript -->
+            </div>
+        </div>
+    </nav>
+
+    <div class="profile-container">
+        <!-- Sidebar -->
+        <div class="profile-sidebar">
+            <div class="profile-header">
+                <div class="profile-avatar" id="profileAvatar">
+                    <img src="" alt="Аватар" id="avatarImage" style="display: none;">
+                    <span id="avatarInitials">U</span>
+                </div>
+                <h2 id="profileName">Пользователь</h2>
+                <p id="profileEmail">user@example.com</p>
+                <div class="profile-level">
+                    <span class="level-badge">Уровень <strong id="userLevel">1</strong></span>
+                </div>
+            </div>
+
+            <nav class="profile-nav">
+                <a href="#overview" class="nav-item active" data-tab="overview">
+                    <i class="fas fa-chart-pie"></i>
+                    Обзор
+                </a>
+                <a href="#progress" class="nav-item" data-tab="progress">
+                    <i class="fas fa-tasks"></i>
+                    Прогресс
+                </a>
+                <a href="#achievements" class="nav-item" data-tab="achievements">
+                    <i class="fas fa-trophy"></i>
+                    Достижения
+                </a>
+                <a href="#courses" class="nav-item" data-tab="courses">
+                    <i class="fas fa-book"></i>
+                    Мои курсы
+                </a>
+                <a href="#settings" class="nav-item" data-tab="settings">
+                    <i class="fas fa-cog"></i>
+                    Настройки
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="profile-content">
+            <!-- Overview Tab -->
+            <div id="overview" class="tab-content active">
+                <div class="tab-header">
+                    <h1>Обзор прогресса</h1>
+                    <p>Статистика вашего обучения</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Дней подряд</h3>
+                            <div class="stat-number" id="streakDays">0</div>
+                            <span class="stat-label">Текущая серия</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Решено задач</h3>
+                            <div class="stat-number" id="solvedTasks">0</div>
+                            <span class="stat-label">Всего выполнено</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Время обучения</h3>
+                            <div class="stat-number" id="learningTime">0</div>
+                            <span class="stat-label">Часов потрачено</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Опыт</h3>
+                            <div class="stat-number" id="userXP">0</div>
+                            <span class="stat-label">Накоплено XP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-section">
+                    <h3>Прогресс по языкам</h3>
+                    <div class="languages-progress" id="languagesProgress">
+                        <!-- Будет заполнено через JavaScript -->
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h3>Недавняя активность</h3>
+                    <div class="activity-list" id="recentActivity">
+                        <!-- Будет заполнено через JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Tab -->
+            <div id="progress" class="tab-content">
+                <div class="tab-header">
+                    <h1>Детальный прогресс</h1>
+                    <p>Подробная статистика по всем языкам</p>
+                </div>
+
+                <div class="progress-charts" id="progressCharts">
+                    <!-- Будет заполнено через JavaScript -->
+                </div>
+            </div>
+
+            <!-- Achievements Tab -->
+            <div id="achievements" class="tab-content">
+                <div class="tab-header">
+                    <h1>Достижения</h1>
+                    <p>Ваши награды и значки</p>
+                </div>
+
+                <div class="achievements-grid" id="achievementsGrid">
+                    <!-- Будет заполнено через JavaScript -->
+                </div>
+            </div>
+
+            <!-- Courses Tab -->
+            <div id="courses" class="tab-content">
+                <div class="tab-header">
+                    <h1>Мои курсы</h1>
+                    <p>Курсы, которые вы проходите</p>
+                </div>
+
+                <div class="user-courses" id="userCourses">
+                    <!-- Будет заполнено через JavaScript -->
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div id="settings" class="tab-content">
+                <div class="tab-header">
+                    <h1>Настройки аккаунта</h1>
+                    <p>Управление вашим профилем</p>
+                </div>
+
+                <div class="settings-sections">
+                    <div class="settings-section">
+                        <h3>Личная информация</h3>
+                        <form class="settings-form" id="profileForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="editFirstName">Имя</label>
+                                    <input type="text" id="editFirstName" name="firstName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="editLastName">Фамилия</label>
+                                    <input type="text" id="editLastName" name="lastName">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="editEmail">Email</label>
+                                <input type="email" id="editEmail" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="editBio">О себе</label>
+                                <textarea id="editBio" name="bio" rows="4" placeholder="Расскажите о себе..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-save">Сохранить изменения</button>
+                        </form>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>Смена пароля</h3>
+                        <form class="settings-form" id="passwordForm">
+                            <div class="form-group">
+                                <label for="currentPassword">Текущий пароль</label>
+                                <input type="password" id="currentPassword" name="currentPassword">
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword">Новый пароль</label>
+                                <input type="password" id="newPassword" name="newPassword">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmNewPassword">Подтвердите новый пароль</label>
+                                <input type="password" id="confirmNewPassword" name="confirmNewPassword">
+                            </div>
+                            <button type="submit" class="btn-save">Сменить пароль</button>
+                        </form>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>Настройки уведомлений</h3>
+                        <div class="notification-settings">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="emailNotifications" checked>
+                                <span class="checkmark"></span>
+                                Email уведомления
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="courseUpdates" checked>
+                                <span class="checkmark"></span>
+                                Обновления курсов
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="achievementAlerts" checked>
+                                <span class="checkmark"></span>
+                                Оповещения о достижениях
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="settings-section danger-zone">
+                        <h3>Опасная зона</h3>
+                        <div class="danger-actions">
+                            <button class="btn-danger" onclick="exportData()">
+                                <i class="fas fa-download"></i>
+                                Экспорт данных
+                            </button>
+                            <button class="btn-danger" onclick="deleteAccount()">
+                                <i class="fas fa-trash"></i>
+                                Удалить аккаунт
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>
