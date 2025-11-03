@@ -1,0 +1,432 @@
+/* === AUTH PAGES === */
+.auth-page {
+    background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 50%, var(--gray-900) 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-md);
+}
+
+.auth-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    width: 100%;
+    gap: var(--space-3xl);
+    align-items: center;
+}
+
+@media (max-width: 968px) {
+    .auth-container {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+    }
+}
+
+/* Auth Card */
+.auth-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    padding: var(--space-2xl);
+    box-shadow: var(--shadow-xl);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+}
+
+.auth-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--light);
+    text-decoration: none;
+    margin-bottom: var(--space-lg);
+}
+
+.auth-logo i {
+    color: var(--primary);
+}
+
+.auth-header h1 {
+    font-size: 2rem;
+    margin-bottom: var(--space-sm);
+    color: var(--light);
+}
+
+.auth-header p {
+    color: var(--gray-400);
+    font-size: 1.125rem;
+}
+
+/* Auth Form */
+.auth-form {
+    margin-bottom: var(--space-xl);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+}
+
+@media (max-width: 480px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: var(--space-lg);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--space-sm);
+    color: var(--gray-300);
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: var(--space-md) var(--space-md) var(--space-md) 2.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    color: var(--light);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.input-icon {
+    position: absolute;
+    left: var(--space-md);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray-500);
+    transition: color 0.3s ease;
+}
+
+.form-group:focus-within .input-icon {
+    color: var(--primary);
+}
+
+.toggle-password {
+    position: absolute;
+    right: var(--space-md);
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--gray-500);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+    color: var(--gray-300);
+}
+
+/* Password Strength */
+.password-strength {
+    margin-top: var(--space-sm);
+}
+
+.strength-bar {
+    height: 4px;
+    background: var(--gray-600);
+    border-radius: 2px;
+    margin-bottom: var(--space-xs);
+    position: relative;
+    overflow: hidden;
+}
+
+.strength-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: var(--danger);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.strength-bar.weak::before {
+    width: 33%;
+    background: var(--danger);
+}
+
+.strength-bar.medium::before {
+    width: 66%;
+    background: var(--warning);
+}
+
+.strength-bar.strong::before {
+    width: 100%;
+    background: var(--accent);
+}
+
+.strength-text {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+}
+
+/* Form Options */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-xl);
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--gray-300);
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.checkbox-label input {
+    display: none;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--gray-500);
+    border-radius: var(--radius-sm);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.checkbox-label input:checked + .checkmark {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.checkbox-label input:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.forgot-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.3s ease;
+}
+
+.forgot-link:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* Auth Button */
+.btn-auth {
+    width: 100%;
+    padding: var(--space-md);
+    background: var(--primary);
+    border: none;
+    border-radius: var(--radius-lg);
+    color: var(--light);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-auth:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.btn-auth:active {
+    transform: translateY(0);
+}
+
+.btn-text {
+    display: block;
+}
+
+.btn-loading {
+    display: none;
+}
+
+.btn-auth.loading .btn-text {
+    display: none;
+}
+
+.btn-auth.loading .btn-loading {
+    display: block;
+}
+
+/* Auth Divider */
+.auth-divider {
+    text-align: center;
+    margin: var(--space-xl) 0;
+    position: relative;
+}
+
+.auth-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.auth-divider span {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0 var(--space-md);
+    color: var(--gray-500);
+    font-size: 0.875rem;
+}
+
+/* Social Auth */
+.social-auth {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.btn-social {
+    padding: var(--space-md);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--light);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+}
+
+.btn-social:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-google:hover {
+    border-color: #db4437;
+}
+
+.btn-github:hover {
+    border-color: #333;
+}
+
+/* Auth Footer */
+.auth-footer {
+    text-align: center;
+    color: var(--gray-500);
+}
+
+.auth-footer a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.auth-footer a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* Auth Features */
+.auth-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+}
+
+.feature-item {
+    text-align: center;
+    color: var(--light);
+}
+
+.feature-item i {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: var(--space-md);
+}
+
+.feature-item h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-sm);
+}
+
+.feature-item p {
+    color: var(--gray-400);
+    line-height: 1.6;
+}
+
+@media (max-width: 968px) {
+    .auth-features {
+        display: none;
+    }
+}
+
+/* Error States */
+.form-group.error input {
+    border-color: var(--danger);
+}
+
+.form-group.error .input-icon {
+    color: var(--danger);
+}
+
+.error-message {
+    color: var(--danger);
+    font-size: 0.875rem;
+    margin-top: var(--space-xs);
+    display: none;
+}
+
+.form-group.error .error-message {
+    display: block;
+}
+
+/* Success States */
+.form-group.success input {
+    border-color: var(--accent);
+}
+
+.form-group.success .input-icon {
+    color: var(--accent);
+}
