@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": "demo-user-1",
+      "firstName": "Демо",
+      "lastName": "Пользователь",
+      "email": "demo@example.com",
+      "password": "ZGVtb3Bhc3M=", 
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "profile": {
+        "level": 3,
+        "xp": 250,
+        "streak": 5,
+        "lastActive": "2024-01-15T10:00:00.000Z",
+        "bio": "Люблю изучать новые технологии и языки программирования!",
+        "avatar": null
+      },
+      "progress": {
+        "totalTasks": 15,
+        "completedCourses": 2,
+        "learningTime": 1200,
+        "languages": {
+          "Python": 65,
+          "JavaScript": 40,
+          "Java": 20
+        }
+      },
+      "achievements": [
+        "first_login",
+        "first_task",
+        "python_beginner"
+      ],
+      "courses": [
+        "python-beginner"
+      ],
+      "settings": {
+        "emailNotifications": true,
+        "courseUpdates": true,
+        "achievementAlerts": true,
+        "newsletter": true
+      }
+    }
+  ]
+}
